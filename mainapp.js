@@ -17,6 +17,10 @@ app.set('view engine', 'hbs');
 //main page
 
 app.get('/', (request, response) => {
+  response.redirect('/login');
+});
+
+app.get('/main', (request, response) => {
   response.render('mainapp.hbs');
 });
 
@@ -26,7 +30,7 @@ app.get('/login', (request, response) => {
 
 app.post('/verifylogin', urlencodedParser, (request, response) => {
   console.log(request.body.user, request.body.pass)
-  res.redirect('/')
+  response.redirect('/main')
 });
 
 app.listen(port, () => {
